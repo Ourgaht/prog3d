@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pierre/Documents/prog3d/mds3d_td1/ext/lodepng/lodepng.cpp
+lodepng.h
+/home/pierre/Documents/prog3d/mds3d_td1/ext/lodepng/lodepng.h
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+
+/home/pierre/Documents/prog3d/mds3d_td1/ext/lodepng/lodepng.h
+string.h
+-
+vector
+-
+string
+-
+lodepng.h
+/home/pierre/Documents/prog3d/mds3d_td1/ext/lodepng/lodepng.h
+iostream
+-
+lodepng.h
+/home/pierre/Documents/prog3d/mds3d_td1/ext/lodepng/lodepng.h
+

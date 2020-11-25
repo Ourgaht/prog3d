@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pierre/Documents/prog3d/mds3d_td1/ext/tinyobjloader/tiny_obj_loader.cc
+tiny_obj_loader.h
+/home/pierre/Documents/prog3d/mds3d_td1/ext/tinyobjloader/tiny_obj_loader.h
+
+/home/pierre/Documents/prog3d/mds3d_td1/ext/tinyobjloader/tiny_obj_loader.h
+map
+-
+string
+-
+vector
+-
+cassert
+-
+cctype
+-
+cmath
+-
+cstddef
+-
+cstdlib
+-
+cstring
+-
+limits
+-
+utility
+-
+fstream
+-
+sstream
+-
+
