@@ -18,29 +18,43 @@ void render(Scene* scene, ImageBlock* result, std::string outputName, bool* done
     Vector3f camY = -camera->up() * tanfovy2 * camera->nearDist();
     Vector3f camF = camera->direction() * camera->nearDist();
 
+	//std::cout << "camX: " << camX.toString() << "\ncamY: " << camY.toString() << "\ncamF: " << camF.toString() << std::endl;
+
     /// TODO:
     ///  1. iterate over the image pixels
-    for(int i=0; i<camera->vpWidth(); i++){
-        for(int j = 0; j<camera->vpHeight(); j++){
+	float camWidth_f = (float)camera->vpWidth();
+	float camHeight_f = (float)camera->vpHeight();
+
+    for(uint i=0; i < (int)camera->vpWidth(); i++){
+        for(uint j = 0; j<camera->vpHeight(); j++){
             ///  2. generate a primary ray
             Ray primaryRay;
+            float i_f = (float)i;
+            float j_f = (float)j;
+
+
             Point3f point = Point3f(camera->position());
             primaryRay.origin = point;
-            Vector2i viewportCenter(camera->vpWidth(), camera->vpHeight()); // pixel coords, surement (vpWidth/2, vpHeight/2)
+            
+            Vector2f viewportCenter(camWidth_f / 2.0f, camHeight_f / 2.0f); // pixel coords, surement (vpWidth/2, vpHeight/2)
+            Vector3f xoffset = (i_f - viewportCenter[0]) / (camWidth_f / 2.0f) * camX; 
+            Vector3f yoffset = (j_f - viewportCenter[1]) / (camHeight_f / 2.0f) * camY; 
+			
+			//std::cout << "xoffset: " << xoffset.toString() << "\tyoffset: " << yoffset.toString() << std::endl;
+            
             Vector3f d = camF;
-            Vector3f xoffset = ((float)(i - viewportCenter[0]) / (camera->vpWidth() / 2)) * camX; 
-            Vector3f yoffset = ((float)(j - viewportCenter[1]) / (camera->vpHeight() / 2)) * camY; 
-
             d += xoffset;
             d += yoffset;
             d.normalize();
             primaryRay.direction = d;
-            ///  3. call the integartor to compute the color along this ray
 
+            ///  3. call the integartor to compute the color along this ray
             Color3f color = scene->integrator()->Li(scene, primaryRay);
 
             ///  4. write this color in the result image
-            Vector2f pos = Vector2f((float)(i - viewportCenter[0]) / (camera->vpWidth() / 2), (float)(j - viewportCenter[1]) / (camera->vpHeight() / 2));
+            Vector2f pos = Vector2f((float)i , (float)j );
+
+            //Color3f testColor((float)i/(float)camera->vpWidth(), (float)j / (float)camera->vpHeight(), 0.0f);
             result->put(pos, color);
 
         }
@@ -70,6 +84,10 @@ int main(int argc, char *argv[])
             }else if(path.extension() == "exr") { // load OpenEXR image
                 screen->loadImage(argv[1]);
             }
+        }
+        else
+        {
+			screen->loadScene("../../../data/troisSpheres.scn");
         }
 
         /* Enter the application main loop */

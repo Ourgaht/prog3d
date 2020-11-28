@@ -126,11 +126,11 @@ Camera::~Camera()
 {
 }
 
-void Camera::setPerspective(float fovY, float near, float far)
+void Camera::setPerspective(float fovY, float near_, float far_)
 {
     mFovY = fovY;
-    mNearDist = near;
-    mFarDist = far;
+    mNearDist = near_;
+    mFarDist = far_;
     mProjIsUptodate = false;
 }
 

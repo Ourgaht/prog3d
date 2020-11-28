@@ -26,7 +26,6 @@ bool Sphere::intersect(const Ray& ray, Hit& hit) const
     float c = oc.dot(oc) - m_radius * m_radius;
     
     float discriminant = b*b - 4*a*c;
-    printf("%f", discriminant);
 
     if(discriminant >= 0){
         float x1 = (-b - sqrt(discriminant) )/ (2 * a);

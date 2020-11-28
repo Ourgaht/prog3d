@@ -36,6 +36,8 @@
 #include <tinyformat.h>
 #include <filesystem/resolver.h>
 
+typedef unsigned int uint;
+
 /* "Ray epsilon": relative error threshold for ray intersection computations */
 #define Epsilon 1e-4f
 

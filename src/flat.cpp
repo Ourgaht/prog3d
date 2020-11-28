@@ -15,8 +15,8 @@ public:
         scene->intersect(ray,hit);
         if(hit.shape()){
             const Shape * shape = hit.shape();
-            return shape->material()->ambientColor();
-
+            Color3f color = shape->material()->ambientColor();
+            return color;
         }
         return Color3f(0.f);
     }

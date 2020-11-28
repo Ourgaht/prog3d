@@ -82,7 +82,7 @@ public:
     /// \returns the distance of the image (near) plane
     float nearDist() const { return mNearDist; }
     /** Setup the perspective projection matrix */
-    void setPerspective(float fovY, float near, float far);
+    void setPerspective(float fovY, float near_, float far_);
     //------------------------------------------------------------
     
     //------------------------------------------------------------
