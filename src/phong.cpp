@@ -20,10 +20,10 @@ Color3f Phong::brdf(const Vector3f& viewDir, const Vector3f& lightDir, const Nor
 {
 
     
-    Vector3f r = 2.0f * normal - lightDir;
-    Color3f specular = m_specularColor * std::pow((std::max(0.0f, viewDir.dot(-r))), m_exponent); //-r for negative value of viewdir
-    Color3f reflectivity = m_diffuseColor + m_specularColor;
-
+    Vector3f r = lightDir - 2.0f * lightDir.dot(normal) * normal;
+    Color3f specular = m_specularColor * std::pow(std::max(0.0001f, viewDir.dot(r)), m_exponent); //-r for negative value of viewdir
+    Color3f reflectivity = m_diffuseColor + specular;
+    
     return reflectivity;
 
 }
