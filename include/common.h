@@ -193,6 +193,11 @@ inline std::string toString(const Eigen::Vector3f& v) {
     return "[" + result + "]";
 }
 
+template <typename T>
+inline int sgn(T val) {
+	return (T(0) < val) - (val < T(0));
+}
+
 /// Compute a direction for the given coordinates in spherical coordinates
 extern Vector3f sphericalDirection(float theta, float phi);
 

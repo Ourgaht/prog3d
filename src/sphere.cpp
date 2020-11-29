@@ -51,8 +51,18 @@ bool Sphere::intersect(const Ray& ray, Hit& hit) const
             }
         }
         hit.setShape(this);
+        Vector3f impactPoint = ray.origin + hit.t() * ray.direction;
+        Vector3f normal (impactPoint - m_center);
+        normal.normalize();
+        float side = static_cast<float>( -sgn( normal.dot(ray.direction) ) );
+
+        hit.setNormal(side * normal);
+
         return true;
     }
+
+    
+
     return false;
 }
 

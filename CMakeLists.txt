@@ -82,6 +82,7 @@ set(SRCS
     src/parser.cpp
     src/proplist.cpp
     src/flat.cpp
+    src/normals.cpp
 )
 
 add_executable(mds3d_raytracer ${SRCS})
