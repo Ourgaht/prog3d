@@ -38,7 +38,7 @@ if(WIN32)
 endif()
 
 add_definitions(-DDATA_DIR="${PROJECT_SOURCE_DIR}/data")
-add_compile_options(-g)
+add_compile_options(-O3)
 
 # the list of source files
 set(SRCS
@@ -83,6 +83,8 @@ set(SRCS
     src/proplist.cpp
     src/flat.cpp
     src/normals.cpp
+    src/direct.cpp
+    src/whitted.cpp
 )
 
 add_executable(mds3d_raytracer ${SRCS})

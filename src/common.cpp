@@ -268,3 +268,7 @@ Eigen::Vector2f sphericalCoordinates(const Eigen::Vector3f &v) {
         result.y() += 2*M_PI;
     return result;
 }
+
+// Vector3f reflect(const Vector3f &n, const Vector3f &v){
+//     return 2.0f * n.dot(v) * n - v; 
+// }
